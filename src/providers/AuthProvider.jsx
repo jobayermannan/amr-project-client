@@ -1,6 +1,6 @@
 import { createContext,  useEffect, useState } from "react";
 import { createUserWithEmailAndPassword,  getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
-import { app } from "../firebase/firebase.config";
+  import app from "../firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -18,14 +18,26 @@ const AuthProvider = ({children}) => {
     return createUserWithEmailAndPassword(auth, email, password);
    }
 
-   const signIn = (email, password) => {
+   const signIn = async (email, password) => {
     setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password)
+    try {
+           return await signInWithEmailAndPassword(auth, email, password);
+       } catch (error) {
+           console.error("Sign in error:", error.code, error.message);
+           setLoading(false);
+           throw error;
+       }
    }
 
-   const googleSignIn = () => {
+   const googleSignIn = async () => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider);
+    try {
+           return await signInWithPopup(auth, googleProvider);
+       } catch (error) {
+           console.error("Google sign in error:", error.code, error.message);
+           setLoading(false);
+           throw error;
+       }
    }
 
   
