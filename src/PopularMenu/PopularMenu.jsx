@@ -4,8 +4,7 @@ import MenuItem from "../pages/Shared/MenuItem/MenuItem";
 
 
 const PopularMenu = () => {
-    // const [menu] = useMenu();
-    // const popular = menu.filter(item => item.category === "popular")
+
 
     const [menu, setMenu] = useState([])
     useEffect(() => {
@@ -38,7 +37,7 @@ const PopularMenu = () => {
                 ></MenuItem> )
             }
         </div>
-        <button className="btn btn-outline border-0 border-b-4 mt-4">Order Now</button>
+        <button className="btn btn-outline border-0 border-b-4 mt-4">View Full Menu</button>
        </section>
     );
 };
