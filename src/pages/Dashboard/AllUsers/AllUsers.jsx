@@ -8,13 +8,16 @@ const AllUsers = () => {
     const axiosSecure = useAxiosSecure();
 
   
-    const { data: users = [], refetch } = useQuery({
+    const { data: users = [], refetch, isLoading } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
+            console.log('Response from /users:', res.data);
             return res.data;
         }
     });
+    
+
 
     
     const handleMakeAdmin = user => {

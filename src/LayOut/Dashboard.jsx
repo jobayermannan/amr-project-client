@@ -2,12 +2,13 @@ import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShopp
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../hook/useCart";
 import { useEffect, useState } from "react";
+import useAdmin from "../hook/useAdmin";
 
 const Dashboard = () => {
     const [cart] = useCart();
     const [cartLength, setCartLength] = useState(0);
     // TODO: get isAdmin value from database
-    const isAdmin = true;
+      const [isAdmin] = useAdmin();
 
     useEffect(() => {
         if (cart) {
@@ -21,7 +22,7 @@ const Dashboard = () => {
             <div className="w-64 min-h-screen bg-orange-400 text-black">
                 <ul className="menu p-4">
                   {
-                    isAdmin ? <>
+                   isAdmin === true ? <>
                       <li>
                         <NavLink to="/dashboard/adminHome">
                         <FaHome></FaHome>
@@ -62,7 +63,7 @@ const Dashboard = () => {
                     <li>
                         <NavLink to="/dashboard/cart">
                         <FaShoppingCart></FaShoppingCart>
-                         My Cart ({cartLength}) </NavLink>
+                         My Cart ({cartLength}) </ NavLink>
                     </li>
                     <li>
                         <NavLink to="/dashboard/review">
