@@ -8,8 +8,8 @@ const Dashboard = () => {
     const [cart] = useCart();
     const [cartLength, setCartLength] = useState(0);
     // TODO: get isAdmin value from database
-    //   const [isAdmin] = useAdmin();
-    const isAdmin = true;
+      const [isAdmin] = useAdmin();
+    
 
     useEffect(() => {
         if (cart) {
@@ -30,7 +30,7 @@ const Dashboard = () => {
                          Admin Home</NavLink>
                      </li>
                     <li>
-                        <NavLink to="/dashboard/addItems">
+                        <NavLink to="/dashboard/add-items">
                       <FaUtensils></FaUtensils>
                          Add Items</NavLink>
                      </li>
