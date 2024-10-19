@@ -28,7 +28,7 @@ export function MenuProvider({ children }) {
     const fetchMenu = async () => {
       dispatch({ type: 'FETCH_START' });
       try {
-        const response = await fetch('http://localhost:5000/menu');
+        const response = await fetch('http://localhost:3000/menu');
         const data = await response.json();
         dispatch({ type: 'FETCH_SUCCESS', payload: data });
       } catch (error) {
